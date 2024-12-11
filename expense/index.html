@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="navbar">
+    <a href="index1.html"><div class="to-do">TO-DO LIST</div></a>
+    <a href=""><div class="journal">JOURNAL</div></a>
+  </div>
+  <div class="container">
+    <h1>Expense Tracker</h1>
+    
+    <form id="expense-form">
+      <input type="text" id="description" placeholder="Description" required>
+      <input type="text" id="category" placeholder="Category" required>
+      <input type="number" id="amount" placeholder="Amount" required>
+      <input type="date" id="spending-date" />
+      <button type="submit">Add expenses</button>
+    </form>
+    
+    <div id="expense-list">
+      <h2>Expenses</h2>
+      <ul id="expenses"></ul>
+    </div>
+    
+    <div id="summary">
+      <h2>Summary</h2>
+      <ul id="category-summary"></ul>
+    </div>
+  </div>
+
+  
+  
+  
+  <h2>Set Your Budget</h2>
+  <form id="budget-form">
+    <input type="number" id="budget" placeholder="Enter your budget" required>
+    <button type="submit">Set Budget</button>
+  </form>
+  
+  <div style="margin-top: 20px;">
+    <div style="width: 100%; background: #ddd; height: 20px; border-radius: 5px; overflow: hidden;">
+      <div id="progress-bar" style="width: 0; height: 100%; background: #4caf50;"></div>
+    </div>
+    <p id="budget-status" style="margin-top: 10px;">Set a budget to track your progress.</p>
+  </div>
+  
+
+
+
+
+
+  <div class="pie">
+    <canvas id="expenseChart"></canvas>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
