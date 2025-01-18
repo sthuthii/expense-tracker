@@ -1,0 +1,50 @@
+// Array to store expenses
+let expenses = [];
+
+// DOM elements
+const expenseForm = document.getElementById('expense-form');
+const expensesList = document.getElementById('expenses');
+const categorySummary = document.getElementById('category-summary');
+
+// Add Expense
+expenseForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const description = document.getElementById('description').value;
+  const category = document.getElementById('category').value;
+  const amount = parseFloat(document.getElementById('amount').value);
+
+  const expense = { description, category, amount };
+  expenses.push(expense);
+
+  updateExpenses();
+  updateSummary();
+
+  // Clear form inputs
+  expenseForm.reset();
+});
+
+// Update Expense List
+function updateExpenses() {
+  expensesList.innerHTML = '';
+  expenses.forEach((expense, index) => {
+    const li = document.createElement('li');
+    li.textContent = `${expense.description} - ${expense.category}: ₹${expense.amount.toFixed(2)}`;
+    expensesList.appendChild(li);
+  });
+}
+
+// Update Summary
+function updateSummary() {
+  const categoryTotals = expenses.reduce((acc, expense) => {
+    acc[expense.category] = (acc[expense.category] || 0) + expense.amount;
+    return acc;
+  }, {});
+
+  categorySummary.innerHTML = '';
+  for (const [category, total] of Object.entries(categoryTotals)) {
+    const li = document.createElement('li');
+    li.textContent = `${category}: ₹${total.toFixed(2)}`;
+    categorySummary.appendChild(li);
+  }
+}

@@ -166,10 +166,15 @@ function updateProgressBar() {
   const progressPercentage = Math.min((totalSpent / budget) * 100, 100);
   progressBar.style.width = progressPercentage + '%';
 
-  if (savings >= 0) {
+  if (savings >= 0 && savings >= budget/2) {
     status.textContent = `You're ₹${savings.toFixed(2)} under your budget!`;
     progressBar.style.background = '#4caf50';
-  } else {
+  } 
+  else if(savings >= 0 && savings <= budget/2){
+    status.textContent = `You're ₹${savings.toFixed(2)} under your budget!`;
+    progressBar.style.background = '#fb2e00';
+  }
+  else {
     status.textContent = `You've exceeded your budget by ₹${Math.abs(savings).toFixed(2)}!`;
     progressBar.style.background = '#f44336';
   }
